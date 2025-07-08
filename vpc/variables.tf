@@ -9,7 +9,6 @@ variable "name" {
   default     = "default-vpc"
 }
 
-
 variable "stage" {
   description = "Stage for the VPC"
   type        = string
