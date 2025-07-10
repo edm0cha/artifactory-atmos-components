@@ -39,11 +39,6 @@ variable "subnets" {
   type        = list(string)
 }
 
-variable "security_groups" {
-  description = "List of security group IDs to associate with the ECS task"
-  type        = list(string)
-}
-
 variable "vpc_id" {
   type        = string
   description = "The ID of the VPC"

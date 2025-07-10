@@ -34,9 +34,9 @@ resource "aws_ecs_service" "this" {
 
   network_configuration {
     subnets          = var.subnets
-    security_groups  = var.security_groups
+    security_groups  = [aws_security_group.ecs_service_sg.id]
     assign_public_ip = true
   }
 
-  depends_on = [aws_ecs_task_definition.this]
+  depends_on = [aws_ecs_task_definition.this, aws_security_group.ecs_service_sg]
 }
