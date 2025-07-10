@@ -1,3 +1,13 @@
+variable "owner" {
+  description = "Owner email of the resources"
+  type        = string
+}
+
+variable "region" {
+  description = "AWS Region"
+  type        = string
+}
+
 variable "cidr_block" {
   description = "CIDR block for the VPC"
   type        = string

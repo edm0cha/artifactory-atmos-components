@@ -1,3 +1,13 @@
+variable "owner" {
+  description = "Owner email of the resources"
+  type        = string
+}
+
+variable "region" {
+  description = "AWS Region"
+  type        = string
+}
+
 variable "name" {
   description = "Name tag for the VPC"
   type        = string
