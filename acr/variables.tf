@@ -1,4 +1,3 @@
-
 variable "name" {
   description = "Name tag for the VPC"
   type        = string
@@ -6,20 +5,52 @@ variable "name" {
 }
 
 variable "stage" {
-  description = "Stage for the VPC"
+  description = "Deployment stage (e.g., dev, staging, prod)"
   type        = string
   default     = "default-vpc"
 }
 
-variable "image_url" {}
-variable "container_port" { default = 8080 }
+variable "image_url" {
+  description = "Docker image URL for the container (e.g., ECR or DockerHub)"
+  type        = string
+  default     = "ubuntu/nginx"
+}
 
-variable "cpu" { default = "256" }
-variable "memory" { default = "512" }
+variable "container_port" {
+  description = "Port on which the container listens"
+  type        = number
+  default     = 8080
+}
+
+variable "cpu" {
+  description = "CPU units for Fargate task (e.g., 256, 512, 1024)"
+  type        = number
+  default     = 512
+}
+
+variable "memory" {
+  description = "Memory (in MiB) for Fargate task (e.g., 512, 1024, 2048)"
+  type        = number
+  default     = 1024
+}
 
 variable "subnets" {
-  type = list(string)
+  description = "List of subnet IDs for ECS service networking"
+  type        = list(string)
 }
+
 variable "security_groups" {
-  type = list(string)
+  description = "List of security group IDs to associate with the ECS task"
+  type        = list(string)
+}
+
+variable "vpc_id" {
+  type        = string
+  description = "The ID of the VPC"
+}
+
+variable "allowed_cidrs" {
+  type        = list(string)
+  default     = ["0.0.0.0/0"]
+  description = "CIDR blocks allowed to access the app"
 }
